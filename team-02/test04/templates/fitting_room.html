@@ -235,7 +235,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 500px;
+            min-height: 400px;
+            max-height: 500px;
             overflow: hidden;
             transition: all 0.3s ease;
         }
@@ -248,6 +249,14 @@
         #fitting-room.has-photo {
             border: 1px solid var(--vogue-grey-medium);
             background: var(--vogue-white);
+        }
+
+        /* 반응형 피팅룸 크기 */
+        @media (max-width: 768px) {
+            #fitting-room {
+                min-height: 300px;
+                max-height: 400px;
+            }
         }
         
         #user-photo {
@@ -487,6 +496,52 @@
             z-index: 10;
         }
         
+        .clothes-controls {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            z-index: 10;
+        }
+        
+        .clothes-control-btn {
+            width: 32px;
+            height: 32px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            user-select: none;
+        }
+        
+        .clothes-control-btn:hover {
+            background: var(--vogue-black);
+            transform: scale(1.1);
+        }
+
+        .clothes-control-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* 모바일 최적화 */
+        @media (max-width: 768px) {
+            .clothes-control-btn {
+                width: 36px;
+                height: 36px;
+                font-size: 16px;
+            }
+        }
+        
         .resize-handle {
             position: absolute;
             width: 16px;
@@ -555,21 +610,135 @@
         
         .modal-content {
             background: var(--vogue-white);
-            padding: var(--space-xl);
-            max-width: 700px;
-            max-height: 80vh;
-            overflow-y: auto;
-            margin: var(--space-md);
-            border: 1px solid var(--vogue-grey-light);
+            padding: 0;
+            max-width: 900px;
+            max-height: 85vh;
+            overflow: hidden;
+            margin: 5% auto;
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         }
         
         .modal-content h2 {
             font-family: var(--font-display);
-            font-size: 2rem;
+            font-size: 2.2rem;
+            font-weight: 400;
+            color: var(--vogue-white);
+            margin: 0;
+            text-align: center;
+            padding: var(--space-xl);
+            background: linear-gradient(135deg, #2c3e50 0%, #3a4f63 100%);
+            letter-spacing: 1px;
+        }
+
+        #lookbook-list {
+            padding: var(--space-xl);
+            max-height: calc(85vh - 180px);
+            overflow-y: auto;
+            background: var(--vogue-white);
+        }
+
+        .looks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-lg);
+            margin: 0;
+        }
+
+        .look-item {
+            background: var(--vogue-white);
+            border: 1px solid var(--vogue-grey-light);
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .look-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .look-image {
+            width: 100%;
+            height: 300px;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .look-image img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .look-info {
+            padding: var(--space-md);
+            background: var(--vogue-white);
+        }
+
+        .look-title {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
             font-weight: 600;
             color: var(--vogue-black);
-            margin-bottom: var(--space-lg);
+            margin: 0 0 8px 0;
             text-align: center;
+        }
+
+        .look-date {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            color: var(--vogue-grey-dark);
+            text-align: center;
+            margin: 0;
+        }
+
+        .empty-looks {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--vogue-grey-dark);
+        }
+
+        .empty-looks h3 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            margin-bottom: var(--space-md);
+            color: var(--vogue-black);
+        }
+
+        .empty-looks p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        #close-modal {
+            position: absolute;
+            bottom: var(--space-lg);
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--vogue-black);
+            color: var(--vogue-white);
+            border: none;
+            padding: var(--space-sm) var(--space-xl);
+            border-radius: 25px;
+            font-family: var(--font-body);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #close-modal:hover {
+            background: var(--vogue-grey-dark);
+            transform: translateX(-50%) translateY(-2px);
         }
         
         .lookbook-item {
@@ -615,27 +784,31 @@
         
         .musinsa-item img {
             width: 100%;
-            height: 80px;
+            height: 120px;
             object-fit: cover;
             margin-bottom: var(--space-xs);
             background: var(--vogue-grey-light);
+            border-radius: 6px;
         }
         
         .musinsa-item-name {
             font-family: var(--font-body);
-            font-size: 0.7rem;
+            font-size: 0.8rem;
             color: var(--vogue-black);
             margin-bottom: var(--space-xs);
+            line-height: 1.3;
+            height: 2.6em;
             overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
         }
         
         .musinsa-item-price {
             font-family: var(--font-accent);
-            font-size: 0.7rem;
+            font-size: 0.8rem;
             color: var(--vogue-gold);
-            font-weight: 500;
+            font-weight: 600;
             font-style: italic;
         }
         
@@ -800,6 +973,29 @@
                     <input type="text" id="search-input" placeholder="Search pieces...">
                 </div>
                 
+                <!-- 사용법 가이드 섹션 -->
+                <div class="help-section" style="margin-bottom: var(--space-lg); padding: var(--space-md); background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 12px; border: 1px solid var(--vogue-grey-light);">
+                    <h4 style="font-family: var(--font-display); font-size: 1.2rem; margin-bottom: var(--space-sm); color: var(--vogue-black); text-align: center;">📖 사용법 가이드</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-sm); font-family: var(--font-body); font-size: 0.85rem; line-height: 1.4;">
+                        <div style="padding: var(--space-xs); background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                            <strong style="color: var(--vogue-gold);">👔 옷 추가:</strong><br>
+                            아래 옷들을 클릭하거나 드래그해서 피팅룸에 올려보세요
+                        </div>
+                        <div style="padding: var(--space-xs); background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                            <strong style="color: var(--vogue-gold);">🎯 크기 조절:</strong><br>
+                            옷 위에 마우스를 올리면 나타나는 <span style="background: #333; color: white; padding: 2px 6px; border-radius: 10px; font-size: 0.7rem;">+ -</span> 버튼 사용
+                        </div>
+                        <div style="padding: var(--space-xs); background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                            <strong style="color: var(--vogue-gold);">📱 레이어 순서:</strong><br>
+                            <span style="background: #333; color: white; padding: 2px 6px; border-radius: 10px; font-size: 0.7rem;">↑ ↓</span> 버튼으로 옷의 앞뒤 순서를 조정하세요
+                        </div>
+                        <div style="padding: var(--space-xs); background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                            <strong style="color: var(--vogue-gold);">💾 룩 저장:</strong><br>
+                            완성된 코디는 "SAVE LOOK" 버튼으로 저장 후 "My Looks"에서 확인
+                        </div>
+                    </div>
+                </div>
+
                 <!-- 무신사 검색 섹션 추가 -->
                 <div class="musinsa-search-section" style="margin-bottom: var(--space-lg); padding: var(--space-md); background: var(--vogue-grey-light); border: 1px solid var(--vogue-grey-medium);">
                     <h4 style="font-family: var(--font-display); font-size: 1.1rem; margin-bottom: var(--space-sm); color: var(--vogue-black);">Musinsa Search</h4>
@@ -807,7 +1003,7 @@
                         <input type="text" id="musinsa-keyword" placeholder="Search fashion items..." style="flex: 1; padding: var(--space-xs) var(--space-sm); border: 1px solid var(--vogue-grey-medium); background: var(--vogue-white); font-family: var(--font-body); font-size: 0.9rem;">
                         <button onclick="fittingRoom.searchMusinsa()" class="btn btn-secondary" style="padding: var(--space-xs) var(--space-sm); min-width: auto;">Search</button>
                     </div>
-                    <div id="musinsa-results" class="musinsa-results" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: var(--space-sm); max-height: 200px; overflow-y: auto;"></div>
+                    <div id="musinsa-results" class="musinsa-results" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: var(--space-sm); max-height: 400px; overflow-y: auto; padding: var(--space-sm);"></div>
                 </div>
                 
                 <div class="category-filters">
@@ -950,56 +1146,56 @@
                         brand: "ATELIER",
                         price: 89000,
                         category: "셔츠",
-                        image: "/static/clothes/white_shirt.png"
+                        image: "./static/clothes/white_shirt.png"
                     },
                     {
                         name: "Blue Cotton T-Shirt",
                         brand: "ATELIER",
                         price: 45000,
                         category: "티셔츠",
-                        image: "/static/clothes/blue_tshirt.png"
+                        image: "./static/clothes/blue_tshirt.png"
                     },
                     {
                         name: "Classic Denim Jeans",
                         brand: "ATELIER",
                         price: 125000,
                         category: "바지",
-                        image: "/static/clothes/classic_jeans.png"
+                        image: "./static/clothes/classic_jeans.png"
                     },
                     {
                         name: "Summer Dress",
                         brand: "ATELIER",
                         price: 156000,
                         category: "원피스",
-                        image: "/static/clothes/summer_dress.png"
+                        image: "./static/clothes/summer_dress.png"
                     },
                     {
                         name: "Leather Jacket",
                         brand: "ATELIER",
                         price: 289000,
                         category: "자켓",
-                        image: "/static/clothes/leather_jacket.png"
+                        image: "./static/clothes/leather_jacket.png"
                     },
                     {
                         name: "Knit Sweater",
                         brand: "ATELIER",
                         price: 98000,
                         category: "니트",
-                        image: "/static/clothes/knit_sweater.png"
+                        image: "./static/clothes/knit_sweater.png"
                     },
                     {
                         name: "Denim Shorts",
                         brand: "ATELIER",
                         price: 65000,
                         category: "바지",
-                        image: "/static/clothes/denim_shorts.png"
+                        image: "./static/clothes/denim_shorts.png"
                     },
                     {
                         name: "Pleated Skirt",
                         brand: "ATELIER",
                         price: 78000,
                         category: "바지",
-                        image: "/static/clothes/pleats_skirt.png"
+                        image: "./static/clothes/pleats_skirt.png"
                     },
                     // 추가 컬렉션 아이템들
                     {
@@ -1007,56 +1203,56 @@
                         brand: "ATELIER",
                         price: 245000,
                         category: "원피스",
-                        image: "/static/clothes/01_dress.png"
+                        image: "./static/clothes/01_dress.png"
                     },
                     {
                         name: "Casual Outerwear",
                         brand: "ATELIER",
                         price: 189000,
                         category: "자켓",
-                        image: "/static/clothes/01_out.png"
+                        image: "./static/clothes/01_out.png"
                     },
                     {
                         name: "Formal Pants",
                         brand: "ATELIER",
                         price: 98000,
                         category: "바지",
-                        image: "/static/clothes/01_pants.png"
+                        image: "./static/clothes/01_pants.png"
                     },
                     {
                         name: "Premium Top",
                         brand: "ATELIER",
                         price: 67000,
                         category: "티셔츠",
-                        image: "/static/clothes/01_up.png"
+                        image: "./static/clothes/01_up.png"
                     },
                     {
                         name: "Designer Dress",
                         brand: "ATELIER",
                         price: 298000,
                         category: "원피스",
-                        image: "/static/clothes/02_dress.png"
+                        image: "./static/clothes/02_dress.png"
                     },
                     {
                         name: "Winter Coat",
                         brand: "ATELIER",
                         price: 345000,
                         category: "자켓",
-                        image: "/static/clothes/02_out.png"
+                        image: "./static/clothes/02_out.png"
                     },
                     {
                         name: "Smart Casual Pants",
                         brand: "ATELIER",
                         price: 145000,
                         category: "바지",
-                        image: "/static/clothes/02_pants.png"
+                        image: "./static/clothes/02_pants.png"
                     },
                     {
                         name: "Cotton Blend Top",
                         brand: "ATELIER",
                         price: 54000,
                         category: "티셔츠",
-                        image: "/static/clothes/02_up.png"
+                        image: "./static/clothes/02_up.png"
                     }
                 ];
                 
@@ -1259,12 +1455,68 @@
                 clothes.style.left = (100 + Math.random() * 100) + 'px';
                 clothes.style.top = (100 + Math.random() * 100) + 'px';
                 clothes.style.width = '150px';
+                clothes.style.zIndex = '2';
                 clothes.draggable = false;
                 
                 // 데이터 저장
                 clothes.dataset.name = item.name;
                 clothes.dataset.desc = item.desc || `${item.brand} - ${item.price.toLocaleString()}원`;
                 clothes.dataset.image = item.image;
+                
+                // 컨트롤 버튼들 컨테이너
+                const controlsContainer = document.createElement('div');
+                controlsContainer.className = 'clothes-controls';
+                
+                // 크기 증가 버튼
+                const increaseBtn = document.createElement('button');
+                increaseBtn.className = 'clothes-control-btn';
+                increaseBtn.innerHTML = '+';
+                increaseBtn.title = 'Increase Size';
+                increaseBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const currentWidth = clothes.offsetWidth;
+                    clothes.style.width = Math.min(400, currentWidth + 20) + 'px';
+                });
+                
+                // 크기 감소 버튼
+                const decreaseBtn = document.createElement('button');
+                decreaseBtn.className = 'clothes-control-btn';
+                decreaseBtn.innerHTML = '-';
+                decreaseBtn.title = 'Decrease Size';
+                decreaseBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const currentWidth = clothes.offsetWidth;
+                    clothes.style.width = Math.max(50, currentWidth - 20) + 'px';
+                });
+                
+                // 앞으로 보내기 버튼
+                const bringToFrontBtn = document.createElement('button');
+                bringToFrontBtn.className = 'clothes-control-btn';
+                bringToFrontBtn.innerHTML = '↑';
+                bringToFrontBtn.title = 'Bring to Front';
+                bringToFrontBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const allClothes = fittingRoom.querySelectorAll('.clothes');
+                    let maxZ = Math.max(...Array.from(allClothes).map(c => parseInt(c.style.zIndex) || 2));
+                    clothes.style.zIndex = (maxZ + 1).toString();
+                });
+                
+                // 뒤로 보내기 버튼
+                const sendToBackBtn = document.createElement('button');
+                sendToBackBtn.className = 'clothes-control-btn';
+                sendToBackBtn.innerHTML = '↓';
+                sendToBackBtn.title = 'Send to Back';
+                sendToBackBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const allClothes = fittingRoom.querySelectorAll('.clothes');
+                    let minZ = Math.min(...Array.from(allClothes).map(c => parseInt(c.style.zIndex) || 2));
+                    clothes.style.zIndex = Math.max(1, minZ - 1).toString();
+                });
+                
+                controlsContainer.appendChild(increaseBtn);
+                controlsContainer.appendChild(decreaseBtn);
+                controlsContainer.appendChild(bringToFrontBtn);
+                controlsContainer.appendChild(sendToBackBtn);
                 
                 // 삭제 버튼
                 const deleteBtn = document.createElement('button');
@@ -1279,6 +1531,7 @@
                 const resizeHandle = document.createElement('div');
                 resizeHandle.className = 'resize-handle';
                 
+                clothes.appendChild(controlsContainer);
                 clothes.appendChild(deleteBtn);
                 clothes.appendChild(resizeHandle);
                 
@@ -1364,60 +1617,152 @@
             }
             
             saveLookbook() {
-                const fittingRoom = document.getElementById('fitting-room');
-                const clothesElements = fittingRoom.querySelectorAll('.clothes');
+                console.log('Saving current look...');
+                const fittedClothes = document.querySelectorAll('.fitted-clothes');
                 
-                if (clothesElements.length === 0) {
-                    alert('저장할 옷이 없습니다!');
+                if (fittedClothes.length === 0) {
+                    alert('피팅룸에 옷이 없습니다. 먼저 옷을 추가해주세요.');
                     return;
                 }
+
+                // 현재 옷들의 상태를 저장
+                const clothesData = [];
+                fittedClothes.forEach((clothe, index) => {
+                    const img = clothe.querySelector('img');
+                    if (img) {
+                        clothesData.push({
+                            name: img.alt || `Item ${index + 1}`,
+                            image: img.src,
+                            left: clothe.style.left,
+                            top: clothe.style.top,
+                            width: clothe.style.width,
+                            height: clothe.style.height,
+                            zIndex: clothe.style.zIndex || 1
+                        });
+                    }
+                });
+
+                // 피팅룸 캡처를 위한 캔버스 생성
+                const fittingArea = document.getElementById('fitting-area');
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
                 
-                const name = prompt('룩북 이름을 입력하세요:', '나의 룩북 ' + new Date().toLocaleDateString());
-                if (!name) return;
+                // 캔버스 크기 설정
+                canvas.width = fittingArea.offsetWidth;
+                canvas.height = fittingArea.offsetHeight;
                 
-                const lookbook = {
-                    name,
-                    date: new Date().toISOString(),
-                    items: Array.from(clothesElements).map(el => ({
-                        name: el.dataset.name,
-                        desc: el.dataset.desc,
-                        image: el.dataset.image,
-                        left: el.style.left,
-                        top: el.style.top,
-                        width: el.style.width
-                    }))
-                };
+                // 배경색 설정
+                ctx.fillStyle = '#f8f9fa';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                // Promise 배열로 이미지 로딩 처리
+                const imagePromises = [];
                 
-                const lookbooks = this.getLookbooks();
-                lookbooks.push(lookbook);
-                localStorage.setItem('lookbooks', JSON.stringify(lookbooks));
-                
-                alert('룩북이 저장되었습니다!');
+                fittedClothes.forEach((clothe) => {
+                    const img = clothe.querySelector('img');
+                    if (img && img.src) {
+                        const promise = new Promise((resolve) => {
+                            const image = new Image();
+                            image.crossOrigin = 'anonymous';
+                            image.onload = () => {
+                                const rect = clothe.getBoundingClientRect();
+                                const fittingRect = fittingArea.getBoundingClientRect();
+                                
+                                const x = rect.left - fittingRect.left;
+                                const y = rect.top - fittingRect.top;
+                                const width = rect.width;
+                                const height = rect.height;
+                                
+                                ctx.drawImage(image, x, y, width, height);
+                                resolve();
+                            };
+                            image.onerror = () => {
+                                console.warn('Failed to load image:', img.src);
+                                resolve(); // 실패해도 계속 진행
+                            };
+                            image.src = img.src;
+                        });
+                        imagePromises.push(promise);
+                    }
+                });
+
+                // 모든 이미지 로딩 완료 후 저장
+                Promise.all(imagePromises).then(() => {
+                    try {
+                        const imageData = canvas.toDataURL('image/png');
+                        
+                        // 저장할 데이터 객체 생성
+                        const lookData = {
+                            timestamp: Date.now(),
+                            imageData: imageData,
+                            clothes: clothesData
+                        };
+
+                        // 기존 저장된 룩들 가져오기
+                        let savedLooks = [];
+                        const existingSaves = localStorage.getItem('savedLooks');
+                        if (existingSaves) {
+                            savedLooks = JSON.parse(existingSaves);
+                        }
+
+                        // 새 룩 추가
+                        savedLooks.push(lookData);
+
+                        // localStorage에 저장
+                        localStorage.setItem('savedLooks', JSON.stringify(savedLooks));
+                        
+                        console.log('Look saved successfully!', lookData);
+                        alert(`룩이 저장되었습니다! (총 ${savedLooks.length}개 저장됨)`);
+                        
+                    } catch (error) {
+                        console.error('Error saving look:', error);
+                        alert('룩 저장 중 오류가 발생했습니다.');
+                    }
+                });
             }
             
             showLookbooks() {
-                const modal = document.getElementById('lookbook-modal');
-                const listDiv = document.getElementById('lookbook-list');
+                const savedLooks = localStorage.getItem('savedLooks');
+                const lookbookList = document.getElementById('lookbook-list');
                 
-                const lookbooks = this.getLookbooks();
-                
-                if (lookbooks.length === 0) {
-                    listDiv.innerHTML = '<p style="text-align: center; color: var(--vogue-grey-dark); padding: 40px; font-style: italic;">No saved looks yet.</p>';
-                } else {
-                    listDiv.innerHTML = lookbooks.map((lb, index) => `
-                        <div class="lookbook-item">
-                            <h3>${lb.name}</h3>
-                            <p>${new Date(lb.date).toLocaleDateString()}</p>
-                            <p>${lb.items.length} pieces</p>
-                            <div class="lookbook-actions">
-                                <button class="btn btn-primary" onclick="fittingRoom.loadLookbook(${index})">Load</button>
-                                <button class="btn btn-secondary" onclick="fittingRoom.deleteLookbook(${index})">Delete</button>
+                if (savedLooks) {
+                    const looks = JSON.parse(savedLooks);
+                    console.log('Found saved looks:', looks);
+                    
+                    if (looks.length > 0) {
+                        lookbookList.innerHTML = `
+                            <div class="looks-grid">
+                                ${looks.map((look, index) => `
+                                    <div class="look-item" onclick="fittingRoom.loadSavedLook(${index})">
+                                        <div class="look-image">
+                                            <img src="${look.imageData}" alt="Look ${index + 1}">
+                                        </div>
+                                        <div class="look-info">
+                                            <div class="look-title">Look ${index + 1}</div>
+                                            <div class="look-date">${new Date(look.timestamp).toLocaleDateString('ko-KR')}</div>
+                                        </div>
+                                    </div>
+                                `).join('')}
                             </div>
+                        `;
+                    } else {
+                        lookbookList.innerHTML = `
+                            <div class="empty-looks">
+                                <h3>저장된 룩이 없습니다</h3>
+                                <p>코디를 완성하고 "SAVE LOOK" 버튼을 눌러 나만의 스타일을 저장해보세요!</p>
+                            </div>
+                        `;
+                    }
+                } else {
+                    lookbookList.innerHTML = `
+                        <div class="empty-looks">
+                            <h3>저장된 룩이 없습니다</h3>
+                            <p>코디를 완성하고 "SAVE LOOK" 버튼을 눌러 나만의 스타일을 저장해보세요!</p>
                         </div>
-                    `).join('');
+                    `;
                 }
                 
-                modal.style.display = 'flex';
+                document.getElementById('lookbook-modal').style.display = 'flex';
             }
             
             loadLookbook(index) {
@@ -1476,6 +1821,65 @@
                 localStorage.setItem('lookbooks', JSON.stringify(lookbooks));
                 
                 this.showLookbooks(); // 목록 새로고침
+            }
+
+            loadSavedLook(index) {
+                console.log('Loading saved look:', index);
+                const savedLooks = localStorage.getItem('savedLooks');
+                if (savedLooks) {
+                    const looks = JSON.parse(savedLooks);
+                    const look = looks[index];
+                    
+                    if (look && look.clothes) {
+                        // 기존 옷들 제거
+                        const existingClothes = document.querySelectorAll('.fitted-clothes');
+                        existingClothes.forEach(item => item.remove());
+                        
+                        // 저장된 옷들 복원 (zIndex 포함)
+                        look.clothes.forEach(clothe => {
+                            const clotheElement = document.createElement('div');
+                            clotheElement.className = 'fitted-clothes';
+                            clotheElement.style.position = 'absolute';
+                            clotheElement.style.left = clothe.left || '50px';
+                            clotheElement.style.top = clothe.top || '50px';
+                            clotheElement.style.width = clothe.width || '100px';
+                            clotheElement.style.height = clothe.height || '120px';
+                            clotheElement.style.zIndex = clothe.zIndex || 1;
+                            clotheElement.style.cursor = 'move';
+                            
+                            clotheElement.innerHTML = `
+                                <img src="${clothe.image}" alt="${clothe.name}" 
+                                     style="width: 100%; height: 100%; object-fit: contain; border-radius: 8px;">
+                                <div class="clothes-controls" style="position: absolute; top: -30px; left: 0; display: flex; gap: 5px; opacity: 0; transition: opacity 0.3s;">
+                                    <button class="clothes-control-btn size-minus" onclick="fittingRoom.adjustClothesSize(this, -10)">-</button>
+                                    <button class="clothes-control-btn size-plus" onclick="fittingRoom.adjustClothesSize(this, 10)">+</button>
+                                    <button class="clothes-control-btn layer-up" onclick="fittingRoom.moveClothesLayer(this, 'up')">↑</button>
+                                    <button class="clothes-control-btn layer-down" onclick="fittingRoom.moveClothesLayer(this, 'down')">↓</button>
+                                </div>
+                            `;
+                            
+                            // 드래그 이벤트 추가
+                            this.makeDraggable(clotheElement);
+                            
+                            // 호버 시 컨트롤 버튼 표시
+                            clotheElement.addEventListener('mouseenter', () => {
+                                const controls = clotheElement.querySelector('.clothes-controls');
+                                if (controls) controls.style.opacity = '1';
+                            });
+                            
+                            clotheElement.addEventListener('mouseleave', () => {
+                                const controls = clotheElement.querySelector('.clothes-controls');
+                                if (controls) controls.style.opacity = '0';
+                            });
+                            
+                            document.getElementById('fitting-area').appendChild(clotheElement);
+                        });
+                        
+                        // 모달 닫기
+                        document.getElementById('lookbook-modal').style.display = 'none';
+                        console.log('Successfully loaded saved look with', look.clothes.length, 'items');
+                    }
+                }
             }
             
             clearFitting() {
