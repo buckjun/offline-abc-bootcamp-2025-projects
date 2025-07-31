@@ -4,6 +4,18 @@
 
 '부캠런치'는 사용자들이 함께 점심 식사를 할 파티를 생성하고, 참여하며, 관리할 수 있는 웹 애플리케이션입니다. 사용자들은 파티를 개설하거나 기존 파티에 참여하여 새로운 사람들과 교류하고 식사를 함께할 수 있습니다. 바쁜 일상 속에서 함께 식사할 사람을 찾고, 즐거운 시간을 보낼 수 있도록 돕는 것을 목표로 합니다.
 
+## 🖼️ 스크린샷
+
+| 메인 화면 | 상세 정보 화면 |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+| <img width="1332" height="1560" alt="Image" src="https://github.com/user-attachments/assets/1c7af074-59f3-4d32-8ae3-4b665bc1daa7" /> | <img width="1336" height="994" alt="Image" src="https://github.com/user-attachments/assets/7591d7b0-c6cb-47c0-8d1e-b28e2bb6c36d" /> |
+| <img width="1335" height="988" alt="Image" src="https://github.com/user-attachments/assets/11f26508-5082-4dd5-b535-72468e2ec57f" /> | <img width="1337" height="1384" alt="Image" src="https://github.com/user-attachments/assets/834f10f5-8361-4440-b875-2fc37d966bce" /> |
+| <img width="1684" height="994" alt="Image" src="https://github.com/user-attachments/assets/e668c429-07a2-49fe-a7b8-674fb263229b" /> | <img width="1707" height="1415" alt="Image" src="https://github.com/user-attachments/assets/869d461c-1082-4ecb-80f9-3aa0ab0dd31f" /> |
+| <img width="1709" height="1330" alt="Image" src="https://github.com/user-attachments/assets/c9d7ab86-6947-48d4-bf2b-dfeb4eda3dfb" /> | <img width="1706" height="1385" alt="Image" src="https://github.com/user-attachments/assets/c14baee4-52c5-4122-8567-562dab72ed60" /> | 
+| <img width="1706" height="1620" alt="Image" src="https://github.com/user-attachments/assets/9d1dfba2-a322-4119-8366-9218d5a7b4a5" /> | <img width="1708" height="1051" alt="Image" src="https://github.com/user-attachments/assets/9451ea8a-5369-48e0-bc10-addace99296c" /> |
+| <img width="1698" height="990" alt="Image" src="https://github.com/user-attachments/assets/05779671-a818-4966-9f6e-bd6825b1805e" /> |  | 
+
+
 ## ✨ 주요 기능
 
 *   **사용자 인증**: 안전한 회원가입, 로그인, 로그아웃 기능을 제공합니다.
